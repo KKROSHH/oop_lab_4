@@ -8,6 +8,18 @@ class Employee
         int age;
         std::string position;
 
+        Employee()
+        {
+            std::cout << "Enter employee's name: " << name <<std::endl;
+            std::cin >> name;
+
+            std::cout << "Enter employee's age: " << name <<std::endl;
+            std::cin >> age;
+
+            std::cout << "Enter employee's position: " << name <<std::endl;
+            std::cin >> position;
+        }
+
         void print() {
             std::cout << "Name: " << name <<std::endl;
             std::cout <<"Age: " << age <<std::endl;
@@ -16,10 +28,10 @@ class Employee
 };
 
 int main() {
-    Employee john {"John", 28, "Manager"};
+    Employee john;
 
-    Employee bob {"Bob", 34, "Accountant"};
-    Employee leah {"Leah", 22, "Programmer"};
+    Employee bob;
+    Employee leah;
 
     john.print();
     std::cout<< "\n";
