@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 
 class Employee
 {
@@ -10,14 +11,18 @@ class Employee
 
         Employee()
         {
-            std::cout << "Enter employee's name: " << name <<std::endl;
-            std::cin >> name;
+            std::cout << "Enter employee's name: " << std::endl;
+            getline(std::cin, name);
 
-            std::cout << "Enter employee's age: " << name <<std::endl;
+            std::cout << "Enter employee's age: " << std::endl;
             std::cin >> age;
 
-            std::cout << "Enter employee's position: " << name <<std::endl;
-            std::cin >> position;
+            std::cout << "Enter employee's position: " << std::endl;
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            getline(std::cin, position);
+
+            std::cout << "Employee created (default constructor)" << std::endl;
+
         }
 
         void print() {
