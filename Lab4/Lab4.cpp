@@ -11,19 +11,39 @@ class Employee
 
         Employee()
         {
-            std::cout << "Enter employee's name: " << std::endl;
-            getline(std::cin, name);
+            for (;;) {
+        std::cout << "Enter employee's name: " << std::endl;
+        getline(std::cin, name);
 
-            std::cout << "Enter employee's age: " << std::endl;
-            std::cin >> age;
-
-            std::cout << "Enter employee's position: " << std::endl;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            getline(std::cin, position);
-
-            std::cout << "Employee created (default constructor)" << std::endl;
-
+        if (name.empty()) {
+            std::cout << "Error: Name cannot be empty. Please try again.\n";
+            continue;
         }
+
+        std::cout << "Enter employee's age: " << std::endl;
+        std::cin >> age;
+
+        if (std::cin.fail() || age < 18 || age > 65) {
+            std::cout << "Error: Invalid age. Age must be between 18 and 65. Please try again.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Enter employee's position: " << std::endl;
+        getline(std::cin, position);
+
+        if (position.empty()) {
+            std::cout << "Error: Position cannot be empty. Please try again.\n";
+            continue;
+        }
+        
+        std::cout << "New employee created successfully!" << std::endl;
+        break;
+
+    }
+}
 
         void print() {
             std::cout << "Name: " << name <<std::endl;
