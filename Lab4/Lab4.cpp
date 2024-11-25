@@ -4,11 +4,12 @@
 
 class Employee
 {
-    public:
+    private:
         std::string name;
         int age;
         std::string position;
 
+    public:
         Employee()
         {
             for (;;) {
